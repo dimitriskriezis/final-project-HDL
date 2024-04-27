@@ -24,12 +24,4 @@ architecture:
           attributes:
             datawidth: 16
           local:
-            - name: MAC       # component under the PE
-              class: intmac
-              attributes:
-                num_pipeline_stages: 1
-            - name: buffer    # local storage under the PE
-              class: regfile
-              attributes:
-                width: 16
-                depth: 24
+            - name: MA9tfc
