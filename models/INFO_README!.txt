@@ -1,0 +1,77 @@
+The Official version of these models have a lot of extra stuff and helpers that makes 
+reading the structure of the model a hard task. Other people have better extracted the
+main structure and is way easier to use (that is what we need anyways)
+
+
+
+GoogleNet:
+
+Sources:
+- Official: https://github.com/pytorch/vision/blob/main/torchvision/models/googlenet.py
+- Other (this): https://github.com/Lornatang/GoogLeNet-PyTorch/blob/main/model.py
+
+
+------------------------------------------------------------------------------------------------
+
+VGG:
+Note: There are two models: VGG16 and VGG19, 16 and 19 layers respectively
+
+Sources:
+-Official: https://pytorch.org/hub/pytorch_vision_vgg/
+-Other: (this)
+       - Used custom sub-classes, makes definition harder: https://github.com/msyim/VGG16/blob/master/VGG16.py
+       -
+
+-Definition: 
+VGG16_NET(
+  (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv3): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv5): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv6): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv8): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv9): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv10): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv11): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv12): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (conv13): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc14): Linear(in_features=25088, out_features=4096, bias=True)
+  (fc15): Linear(in_features=4096, out_features=4096, bias=True)
+  (fc16): Linear(in_features=4096, out_features=10, bias=True)
+)
+
+------------------------------------------------------------------------------------------------
+
+MobileNet:
+Note: There is MobileNet v1, v2, and v3 (https://github.com/jmjeon94/MobileNet-Pytorch)
+
+Sources:
+-Official: https://pytorch.org/hub/pytorch_vision_mobilenet_v2/
+-Other (this): https://github.com/jmjeon94/MobileNet-Pytorch/tree/master
+
+------------------------------------------------------------------------------------------------
+
+ResNet:
+Note: There are ResNet 18, 34, 50, 101, 152
+
+Sources:
+- Official: https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py
+- Other: https://github.com/JayPatwardhan/ResNet-PyTorch/blob/master/ResNet/ResNet.py
+- To Read: https://medium.com/@karuneshu21/how-to-resnet-in-pytorch-9acb01f36cf5
+
+
+
+------------------------------------------------------------------------------------------------
+
+BeRT:
+Note: BERT might take a bit more work since there are a lot of sub-classes declarations that makes 
+the model harder to define. 
+
+Sources:
+- Other: https://github.com/codertimo/BERT-pytorch
+- Info: https://medium.com/data-and-beyond/complete-guide-to-building-bert-model-from-sratch-3e6562228891
+
+
