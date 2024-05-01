@@ -9,6 +9,7 @@ architecture:
             global_cycle_seconds: 1e-9
             DATAWIDTH: 8
             has_power_gating: false
+            power_gated_at: null
         local:
           - name: DRAM[1..1]
             class: DRAM
@@ -25,10 +26,10 @@ architecture:
                 allow_overbooking: false
                 meshX: 1
                 meshY: 1
-                power_gated_at: "DRAM"
+                power_gated_at: null
             required_actions:
-              - write
               - read
+              - write
               - leak
               - update
             enabled: true
@@ -47,10 +48,10 @@ architecture:
                 allow_overbooking: false
                 meshX: 1
                 meshY: 1
-                power_gated_at: "buffer"
+                power_gated_at: null
             required_actions:
-              - write
               - read
+              - write
               - leak
               - update
             enabled: true
@@ -70,7 +71,30 @@ architecture:
                 allow_overbooking: false
                 meshX: 1
                 meshY: 1
-                power_gated_at: "inter_PE_spatial"
+                power_gated_at: null
+            enabled: true
+          - name: reg[1..8]
+            class: SRAM
+            subclass: register
+            attributes:
+                datawidth: 8
+                depth: 1
+                width: 24
+                has_power_gating: false
+                n_banks: 2
+                cluster_size: 1
+                reduction_supported: true
+                multiple_buffering: 1
+                min_utilization: 0
+                allow_overbooking: false
+                meshX: 8
+                meshY: 1
+                power_gated_at: null
+            required_actions:
+              - read
+              - write
+              - leak
+              - update
             enabled: true
           - name: mac[1..8]
             class: intmac
@@ -80,7 +104,7 @@ architecture:
                 has_power_gating: false
                 meshX: 8
                 meshY: 1
-                power_gated_at: "mac"
+                power_gated_at: null
             required_actions:
               - compute
             enabled: true
@@ -93,7 +117,7 @@ architecture_constraints:
           - Inputs
           - Outputs
           - Weights
-        type: dataspace
+        type: bypass
         target: buffer
       - type: temporal
         permutation: GSR
@@ -111,8 +135,18 @@ architecture_constraints:
           - Weights
           - Inputs
           - Outputs
-        type: dataspace
+        type: bypass
         target: inter_PE_spatial
+      - keep:
+          - Inputs
+          - Outputs
+          - Weights
+        type: bypass
+        target: reg
+      - type: temporal
+        factors: C=1,M=1,R=1,S=1,N=1,P=1,Q=1,G=1
+        permutation: GQPNSRMC
+        target: reg
 problem:
     version: '0.4'
     instance:
@@ -228,7 +262,7 @@ mapper:
     version: '0.4'
     live_status: false
     num_threads: 4
-    search_size: 1000
+    search_size: 100
     victory_condition: 10000
     timeout: 10000
     max_permutations_per_if_visit: 4
@@ -248,8 +282,9 @@ mapper:
     filter_revisits: false
 mapspace:
     version: '0.4'
-    template: ruby
+    template: uber
 globals:
     version: '0.4'
     environment_variables: {}
     expression_custom_functions: []
+    accelergy_plug_ins: []

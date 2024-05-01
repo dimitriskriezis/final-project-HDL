@@ -10,6 +10,9 @@ ART_summary:
       - name: system_top_level.inter_PE_spatial[1..1]
         area: 1.0
         primitive_estimations: dummy_table
+      - name: system_top_level.reg[1..8]
+        area: 0
+        primitive_estimations: []
       - name: system_top_level.mac[1..8]
         area: 1726.5
         primitive_estimations:

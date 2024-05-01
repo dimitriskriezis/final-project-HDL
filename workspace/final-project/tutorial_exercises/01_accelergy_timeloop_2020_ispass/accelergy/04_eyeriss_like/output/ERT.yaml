@@ -1,4 +1,4 @@
-ERT:
+accERT:
     version: '0.4'
     tables:
       - name: eyeriss_like.PE[0..167].mac

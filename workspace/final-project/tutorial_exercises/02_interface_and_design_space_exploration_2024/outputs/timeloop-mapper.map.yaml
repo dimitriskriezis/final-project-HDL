@@ -1,4 +1,12 @@
 mapping:
+  - target: reg
+    type: datatype
+    keep:
+      - Weights
+      - Inputs
+      - Outputs
+    bypass:
+      []
   - target: inter_PE_spatial
     type: datatype
     keep:
@@ -23,6 +31,10 @@ mapping:
       - Outputs
     bypass:
       []
+  - target: reg
+    type: temporal
+    factors: C1 M1 R1 S1 N1 P1 Q1 G1
+    permutation: CMRSNPQG
   - target: inter_PE_spatial
     type: spatial
     factors: C1 M8 R1 S1 N1 P1 Q1 G1
@@ -34,9 +46,9 @@ mapping:
     permutation: CMRSNPQG
   - target: buffer
     type: temporal
-    factors: C4 M8 R1 S1 N4 P16 Q1 G1
-    permutation: MNPCRSQG
+    factors: C64 M8 R1 S1 N1 P1 Q32 G1
+    permutation: CQMRSNPG
   - target: DRAM
     type: temporal
-    factors: C32 M2 R1 S1 N8 P8 Q128 G1
-    permutation: CMQNPRSG
+    factors: C2 M2 R1 S1 N32 P128 Q4 G1
+    permutation: PNQCMRSG

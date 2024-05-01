@@ -16,9 +16,9 @@ ART_summary:
           - name: address_generators[0..1]
             estimator: Aladdin_table
       - name: simple_compound.GLB
-        area: 39527.545841
+        area: 17517.445841
         primitive_estimations:
           - name: storage
-            estimator: CACTI
+            estimator: CactiSRAM
           - name: address_generators[0..1]
             estimator: Aladdin_table
