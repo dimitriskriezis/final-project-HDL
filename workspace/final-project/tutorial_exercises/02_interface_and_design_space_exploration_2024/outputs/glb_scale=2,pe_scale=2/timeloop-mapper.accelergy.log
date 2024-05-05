@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 365, in load_yaml
+    result = merge_check(get_yaml(path, data).load(parsed))
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 451, in load
+    return constructor.get_single_data()
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 116, in get_single_data
+    return self.construct_document(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 125, in construct_document
+    for _dummy in generator:
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1476, in construct_yaml_map
+    self.construct_mapping(node, data, deep=True)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1366, in construct_mapping
+    if self.check_mapping_key(node, key_node, maptyp, key, value):
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 278, in check_mapping_key
+    raise DuplicateKeyError(*args)
+ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/accelergy", line 5, in <module>
+    from accelergy.accelergy_console import main
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/accelergy_console.py", line 23, in <module>
+    from accelergy.raw_inputs_2_dicts import RawInputs2Dicts
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 2, in <module>
+    from accelergy.parsing_utils import *
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/parsing_utils.py", line 479, in <module>
+    set_script_paths()
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/parsing_utils.py", line 457, in set_script_paths
+    config = load_yaml(get_config_file_path())
+  File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 374, in load_yaml
+    raise ValueError(
+ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+

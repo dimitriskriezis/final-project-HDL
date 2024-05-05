@@ -1,0 +1,22 @@
+DRAM [ Weights:1728 (1728) Inputs:72 (72) Outputs:24 (24) ] 
+-----------------------------------------------------------
+| for M in [0:3)
+
+shared_glb [ Inputs:72 (72) ] 
+-----------------------------
+|   for C in [0:9)
+
+inter_PE_spatial [ ] 
+--------------------
+|     for M in [0:8) (Spatial-Y)
+|       for C in [0:2) (Spatial-Y)
+
+pe_spad [ Weights:4 (4) ] 
+-------------------------
+|         for C in [0:4)
+
+weight_reg [ Weights:1 (1) ] 
+input_activation_reg [ Inputs:1 (1) ] 
+output_activation_reg [ Outputs:1 (1) ] 
+---------------------------------------
+|           << Compute >>

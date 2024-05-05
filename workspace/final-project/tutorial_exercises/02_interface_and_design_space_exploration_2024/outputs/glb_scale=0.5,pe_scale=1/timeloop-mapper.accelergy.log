@@ -1,0 +1,274 @@
+2024-05-03 03:26:16 INFO            _                _                      
+2024-05-03 03:26:16 INFO           / \   ___ ___ ___| | ___ _ __ __ _ _   _ 
+2024-05-03 03:26:16 INFO          / _ \ / __/ __/ _ \ |/ _ \ '__/ _` | | | |
+2024-05-03 03:26:16 INFO         / ___ \ (_| (_|  __/ |  __/ | | (_| | |_| |
+2024-05-03 03:26:16 INFO        /_/   \_\___\___\___|_|\___|_|  \__, |\__, |
+2024-05-03 03:26:16 INFO                                        |___/ |___/ 
+2024-05-03 03:26:16 INFO        generating outputs according to the following specified output flags... 
+2024-05-03 03:26:16 INFO         Please use the -f flag to update the preference (default to all output files)
+2024-05-03 03:26:16 INFO        {'ERT': 1, 'ERT_summary': 1, 'ART': 1, 'ART_summary': 1, 'energy_estimation': 1, 'flattened_arch': 1}
+2024-05-03 03:26:16 INFO        Located config file at /home/workspace/.config/accelergy/accelergy_config.yaml.
+
+
+
+
+
+============================================================
+Accelergy has encountered an error and crashed. Error below: 
+============================================================
+|| Traceback (most recent call last):
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 365, in load_yaml
+||     result = merge_check(get_yaml(path, data).load(parsed))
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 451, in load
+||     return constructor.get_single_data()
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 116, in get_single_data
+||     return self.construct_document(node)
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 125, in construct_document
+||     for _dummy in generator:
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1476, in construct_yaml_map
+||     self.construct_mapping(node, data, deep=True)
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1366, in construct_mapping
+||     if self.check_mapping_key(node, key_node, maptyp, key, value):
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 278, in check_mapping_key
+||     raise DuplicateKeyError(*args)
+|| ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+||   in "<unicode string>", line 1, column 1:
+||     version: '0.4'
+||     ^ (line: 1)
+|| found duplicate key "version" with value "0.4" (original value: "0.4")
+||   in "<unicode string>", line 12, column 1:
+||     version: '0.4'
+||     ^ (line: 12)
+|| 
+|| To suppress this check see:
+||     http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+|| 
+|| 
+|| The above exception was the direct cause of the following exception:
+|| 
+|| Traceback (most recent call last):
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/accelergy_console.py", line 237, in main
+||     run()
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/accelergy_console.py", line 93, in run
+||     raw_dicts = RawInputs2Dicts(raw_input_info, args.update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 29, in __init__
+||     self.load_and_construct_dicts(update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 34, in load_and_construct_dicts
+||     self.construct_parse_config_file(update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 413, in construct_parse_config_file
+||     original_content = load_yaml(original_config_file_path)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 374, in load_yaml
+||     raise ValueError(
+|| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+||   in "<unicode string>", line 1, column 1:
+||     version: '0.4'
+||     ^ (line: 1)
+|| found duplicate key "version" with value "0.4" (original value: "0.4")
+||   in "<unicode string>", line 12, column 1:
+||     version: '0.4'
+||     ^ (line: 12)
+|| 
+|| To suppress this check see:
+||     http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+============================================================
+Stack with local variables (most recent call last):
+============================================================
+Frame 3
+============================================================
+| /usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py:29
+| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+| Local var self =                         <accelergy.raw_inputs_2_dicts.RawInputs2Dicts object at 0x7f4e24ba3490>
+| Local var update_config_version =        False
+|          25:        self.ERT_dict = {}
+|          26:        self.action_counts_dict = {}
+|          27:        self.config = None
+|          28:        self.arch_variables = {}
+| ERROR >> 29:        self.load_and_construct_dicts(update_config_version)
+|          30: 
+|          31:    def load_and_construct_dicts(self, update_config_version):
+|          32:        # load and classify input files
+|          33:        # construct new or parse existing config file
+============================================================
+Frame 2
+============================================================
+| /usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py:34
+| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+| Local var self =                         <accelergy.raw_inputs_2_dicts.RawInputs2Dicts object at 0x7f4e24ba3490>
+| Local var update_config_version =        False
+|          30: 
+|          31:    def load_and_construct_dicts(self, update_config_version):
+|          32:        # load and classify input files
+|          33:        # construct new or parse existing config file
+| ERROR >> 34:        self.construct_parse_config_file(update_config_version)
+|          35: 
+|          36:        # merge all paths (input + compound compondnt lib)
+|          37:        all_paths = self.path_arglist
+|          38:        if "compound_components" in self.config:
+============================================================
+Frame 1
+============================================================
+| /usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py:413
+| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+| Local var original_config_file_path =    /home/workspace/.config/accelergy/accelergy_config.yaml
+|          409: if not os.path.exists(original_config_file_path):
+|          410:     raise FileNotFoundError(
+|          411:         f"Couldn't find Accelergy config file at {original_config_file_path}"
+|          412:     )
+| ERROR >> 413: original_content = load_yaml(original_config_file_path)
+|          414: INFO("config file located:", original_config_file_path)
+|          415: if "version" not in original_content:
+|          416:     raise AttributeError(
+|          417:         "config file has no version number, cannot proceed"
+============================================================
+Frame 0
+============================================================
+| /usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py:374
+| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+  in "<unicode string>", line 1, column 1:
+    version: '0.4'
+    ^ (line: 1)
+found duplicate key "version" with value "0.4" (original value: "0.4")
+  in "<unicode string>", line 12, column 1:
+    version: '0.4'
+    ^ (line: 12)
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+| Local var path =                         /home/workspace/.config/accelergy/accelergy_config.yaml
+| Local var parsed =                       version: '0.4'
+estimator_plug_ins:
+  - /usr/local/share/accelergy/estimation_plug_ins
+primitive_components:
+  - /usr/local/share/accelergy/primitive_component_libs
+compound_components: []
+math_functions: []
+python_plug_ins: []
+table_plug_ins:
+    roots:
+      - /usr/local/share/accelergy/table_plug_ins
+version: '0.4'
+estimator_plug_ins:
+  - /usr/local/share/accelergy/estimation_plug_ins
+primitive_components:
+  - /usr/local/share/accelergy/primitive_component_libs
+compound_components: []
+math_functions: []
+python_plug_ins: []
+table_plug_ins:
+    roots:
+      - /usr/local/share/accelergy/table_plug_ins
+version: '0.4'
+estimator_plug_ins:
+  - /usr/local/share/accelergy/estimation_plug_ins
+primitive_components:
+  - /usr/local/share/accelergy/primitive_component_libs
+compound_components: []
+math_functions: []
+python_plug_ins: []
+table_plug_ins:
+    roots:
+      - /usr/local/share/accelergy/table_plug_ins
+| Local var failpath =                     /tmp/accelergy_error0.yaml
+| Local var f =                            <_io.TextIOWrapper name='/tmp/accelergy_error0.yaml' mode='w' encoding='UTF-8'>
+|          370:            failpath = f"/tmp/accelergy_error{ERRCOUNT}.yaml"
+|          371:            ERRCOUNT += 1
+|          372:            with open(failpath, "w") as f:
+|          373:                f.write(parsed)
+| ERROR >> 374:            raise ValueError(
+|          375:                f"Error parsing YAML file {path}. Offending file written to "
+|          376:                f"{failpath}. {e}"
+|          377:            ) from e
+|          378: 
+============================================================
+|| Traceback (most recent call last):
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 365, in load_yaml
+||     result = merge_check(get_yaml(path, data).load(parsed))
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 451, in load
+||     return constructor.get_single_data()
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 116, in get_single_data
+||     return self.construct_document(node)
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 125, in construct_document
+||     for _dummy in generator:
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1476, in construct_yaml_map
+||     self.construct_mapping(node, data, deep=True)
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 1366, in construct_mapping
+||     if self.check_mapping_key(node, key_node, maptyp, key, value):
+||   File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 278, in check_mapping_key
+||     raise DuplicateKeyError(*args)
+|| ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+||   in "<unicode string>", line 1, column 1:
+||     version: '0.4'
+||     ^ (line: 1)
+|| found duplicate key "version" with value "0.4" (original value: "0.4")
+||   in "<unicode string>", line 12, column 1:
+||     version: '0.4'
+||     ^ (line: 12)
+|| 
+|| To suppress this check see:
+||     http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+|| 
+|| 
+|| The above exception was the direct cause of the following exception:
+|| 
+|| Traceback (most recent call last):
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/accelergy_console.py", line 237, in main
+||     run()
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/accelergy_console.py", line 93, in run
+||     raw_dicts = RawInputs2Dicts(raw_input_info, args.update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 29, in __init__
+||     self.load_and_construct_dicts(update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 34, in load_and_construct_dicts
+||     self.construct_parse_config_file(update_config_version)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/raw_inputs_2_dicts.py", line 413, in construct_parse_config_file
+||     original_content = load_yaml(original_config_file_path)
+||   File "/usr/local/lib/python3.8/dist-packages/accelergy/utils/yaml.py", line 374, in load_yaml
+||     raise ValueError(
+|| ValueError: Error parsing YAML file /home/workspace/.config/accelergy/accelergy_config.yaml. Offending file written to /tmp/accelergy_error0.yaml. while constructing a mapping
+||   in "<unicode string>", line 1, column 1:
+||     version: '0.4'
+||     ^ (line: 1)
+|| found duplicate key "version" with value "0.4" (original value: "0.4")
+||   in "<unicode string>", line 12, column 1:
+||     version: '0.4'
+||     ^ (line: 12)
+|| 
+|| To suppress this check see:
+||     http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+============================================================
+Accelergy has encountered an error and crashed. Error above. 
+============================================================
+

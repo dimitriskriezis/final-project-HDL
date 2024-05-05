@@ -1,0 +1,34 @@
+DRAM [ Weights:4096000 (4096000) Inputs:4096 (4096) Outputs:1000 (1000) ] 
+-------------------------------------------------------------------------
+| for C in [0:8)
+|   for M in [0:10)
+
+GlobalBuffer [ Inputs:512 (512) Outputs:100 (100) ] 
+---------------------------------------------------
+|     for M in [0:5)
+
+inter_PE_spatial [ ] 
+--------------------
+|       for C in [0:8) (Spatial-X)
+|         for M in [0:2) (Spatial-X)
+
+PEInputBuffer [ Inputs:64 (64) ] 
+--------------------------------
+|           for M in [0:5)
+
+inter_distributed_buffers_spatial [ ] 
+-------------------------------------
+|             for M in [0:2) (Spatial-Y)
+
+PEWeightBuffer [ Weights:64 (64) ] 
+----------------------------------
+|               for C in [0:16)
+
+PEAccuBuffer [ Outputs:1 (1) ] 
+inter_reg_mac_spatial [ ] 
+-------------------------
+|                 for C in [0:4) (Spatial-Y)
+
+PEWeightRegs [ Weights:1 (1) ] 
+------------------------------
+|                   << Compute >>
